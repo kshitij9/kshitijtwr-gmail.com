@@ -24,11 +24,16 @@ export class ReplayMessageComponent implements OnInit {
               }
 
   ngOnInit(): void {
+    //Get all messages from the JSON
     this.messageservice.getAllMessages(this.fileName.file.name).subscribe(data => {
       this.messages = data.data;
     })
   }
 
+  /**
+   * Desc:: set the timestamp for filtering the messages
+   * @param value 
+   */
   timeStampChanged(value) {
     this.selectedTimestamp = value.value; 
   }

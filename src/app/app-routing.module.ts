@@ -5,7 +5,7 @@ import { ReplayMessageComponent } from './replay-message/replay-message.componen
 
 
 const routes: Routes = [
-  { path: 'picker', component: JsonPickerComponent, pathMatch: 'full'},
+  { path: 'picker', component: JsonPickerComponent},
   { path: 'messages', component: ReplayMessageComponent},
   {
     path: '',

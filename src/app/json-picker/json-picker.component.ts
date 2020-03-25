@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { jsonPickerervice } from './services/json-picker.service';
 
 @Component({
   selector: 'app-json-picker',
@@ -8,38 +9,18 @@ import { Router } from '@angular/router';
 })
 export class JsonPickerComponent implements OnInit {
 
-  constructor(@Inject(Router) private router: Router) { }
-  jsonFileRoutes = [
-    {
-      id: 1,
-      name: 'messages1'
-    }, 
-    {
-      id: 2,
-      name: 'messages2'
-    }, 
-    {
-      id: 3,
-      name: 'messages3'
-    },
-    {
-      id: 4,
-      name: 'messages3'
-    },
-    {
-      id: 5,
-      name: 'messages3'
-    },
-    {
-      id: 6,
-      name: 'messages3'
-    }
-  ]
+  constructor(@Inject(Router) private router: Router,
+    @Inject(jsonPickerervice) private jsonPickerService: jsonPickerervice) { }
+
+  jsonFileRoutes;
+
   ngOnInit(): void {
+    //Get all json file names
+    this.jsonFileRoutes = this.jsonPickerService.getAllJsonFileNames();
   }
 
   fileSelected(file) {
-    this.router.navigate(['messages'], {state: {file} });
+    this.router.navigate(['messages'], { state: { file } });
   }
 
 }
