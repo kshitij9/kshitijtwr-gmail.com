@@ -1,0 +1,25 @@
+<div class="body">
+    <h2 class="messages-heading">Messages</h2>
+    <div class="start-time" *ngIf="messages">
+        <label>
+            Select a start time
+        </label>
+        <mat-slider
+        thumbLabel
+        [displayWith]="formatLabel"
+        tickInterval="100"
+        min="{{messages[0].timestamp}}"
+        max="{{messages[messages.length - 1].timestamp}}"
+        (change)="timeStampChanged($event)"
+        ></mat-slider>
+    </div>
+    <div class="container">
+        <div *ngFor="let message of messages | timeFilter: selectedTimestamp" class="mt-20">
+            <app-messages [message]="message.message" 
+            [senderName]="message.name" 
+            [messageId]="message.id">
+            </app-messages>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,6 @@
+<div class="body-font">
+    <span class="sender-name col-md-6">{{senderName}}</span>
+    <div class="messages" [ngClass]="{'yours': messageId % 2 === 0, 'mine': messageId % 2 === 1}">
+        <div class="message">{{message}}</div>
+    </div>
+</div>
